@@ -1,4 +1,0 @@
-
-$(function(){
-  $(".twentytwenty-container").twentytwenty();
-});
