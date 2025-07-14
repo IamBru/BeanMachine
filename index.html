@@ -195,6 +195,12 @@
     updateOrder();
   }
 
+  function removeItem(index) {
+    total -= order[index].price * (order[index].qty || 1);
+    order.splice(index, 1);
+    updateOrder();
+  }
+
   function updateOrder() {
     const orderSummary = document.getElementById("orderSummary");
     const totalDisplay = document.getElementById("totalDisplay");
@@ -203,9 +209,10 @@
     let summaryHTML = "<ul>";
     let copyText = "";
 
-    order.forEach(item => {
-      summaryHTML += `<li>${item.name} - $${item.price}</li>`;
-      copyText += `${item.name} - $${item.price}\n`;
+    order.forEach((item, index) => {
+      const qty = item.qty || 1;
+      summaryHTML += `<li onclick="removeItem(${index})" style="cursor:pointer;">${item.name} x${qty} - $${item.price * qty}</li>`;
+      copyText += `${item.name} x${qty} - $${item.price * qty}\n`;
     });
     summaryHTML += "</ul>";
     copyText += `\nTotal: $${total}`;
