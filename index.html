@@ -217,7 +217,7 @@
   <label>Copy & Paste Summary:</label>
   <textarea id="copyOutput" readonly></textarea>
 
-  <button onclick="copyToClipboard()">Copy Summary</button>
+  <button id="copyBtn" onclick="copyToClipboard()">Copy Summary</button>
   <button id="clearBtn" onclick="clearAll()">Clear All</button>
 </div>
 
@@ -276,7 +276,6 @@
   function copyToClipboard() {
   const copyText = document.getElementById("copyOutput");
   copyText.select();
-  copyText.setSelectionRange(0, 99999); // For mobile devices
   document.execCommand("copy");
 }
 </script>
