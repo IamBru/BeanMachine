@@ -8,7 +8,7 @@
   
     :root {
   --logo-size: clamp(40px, 11em, 250px);
-  }
+    }
     body {
       font-family: Arial, sans-serif;
       background: 
@@ -20,29 +20,21 @@
     }
     
     .header-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1em;
-    gap: 1em;
-    flex-wrap: wrap;
-    margin-bottom: clamp(1em, calc(var(--logo-size) * 1.8), 6em); /* Dynamically linked margin */
-  }
-    
-    h1 {
-    text-align: center;
-    color: #d2f2cc;
-    font-size: clamp(24px, 4vw, 48px); /* Scales with screen size */
-    margin-top: clamp(60px, 10vw, 10px); /* Push down below logos */
-    padding: clamp(10px, 2vw, 20px);
-  }
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2em;
+      gap: clamp(0.2em, 5vw, 6em);
+      flex-wrap: nowrap;
+      margin-bottom: clamp(1em, calc(var(--logo-size) * 1.5), 2em); /* Dynamically linked margin */
+    }
 
     .corner-logo {
-      top: 1.5vh;
-      height: clamp(60px, 10vw, 250px);     /* min 40px, ideal 8% of viewport width, max 80px */
+      height: clamp(40px, 8vw, 250px);
       width: auto;
+      flex-shrink: 1;
+      transform: translateY(-0.5em);
       z-index: 1000;
-      box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.0);
     }
 
     .corner-logo.left {
@@ -51,6 +43,34 @@
 
     .corner-logo.right {
       right: 1.5vw;
+    }
+
+    h1 {
+      font-size: 2.5em; /* Scales with logo size */
+      margin: 0;
+      padding: 0.3em 1em;
+      font-size: clamp(1.2em, 4vw, 2.5em);
+      background: linear-gradient(to right, #3a4f3f, #5e7a67);
+      border: 3px solid #212523;
+      border-radius: 18px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      color: #d2f2cc;
+
+      display: inline-flex;             /* 🔑 Turn into flex container */
+      align-items: center;       /* 🔑 Vertically center text */
+      justify-content: center;   /* Horizontally center (optional for extra safety) */
+
+      width: fit-content;
+      max-width: 100%;
+      line-height: 1.0;        /* Controls vertical size gently */
+      word-break: break-word;  /* Prevents weird overflow */
+      flex: 1 1 auto;
+      flex-shrink: 1; /* allows it to scale down if needed */
+      white-space: nowrap;
+      max-width: 100%;
+      overflow-x: auto;
+      overflow: hidden;
+      text-align: center;
     }
 
     .category {
@@ -167,28 +187,20 @@
       margin-top: 10px;
     }
 
-  .header-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1em;
-    gap: 1em;
-    flex-wrap: wrap;
-    margin-bottom: clamp(1em, calc(var(--logo-size) * 1.8), 6em); /* Dynamically linked margin */
-  }
-
   .corner-logo {
     height: var(--logo-size);
     width: auto;
     flex-shrink: 0;
     transform: translateY(-0.5em);
+    transform: translateY(-0.5em);
+    z-index: 1000;
   }
 
   h1 {
-    font-size: 2em; /* Scales with logo size */
+    font-size: 2.5em; /* Scales with logo size */
     margin: 0;
     padding: 0.3em 1em;
+    font-size: clamp(1.5em, 4vw, 2.5em);
     background: linear-gradient(to right, #3a4f3f, #5e7a67);
     border: 3px solid #212523;
     border-radius: 18px;
@@ -201,7 +213,8 @@
 
   @media (max-width: 850px) {
   .header-container {
-    margin-bottom: 1.2em;
+    margin-bottom: 1.0em;
+    gap: clamp(0.2em, 1vw, 6em);
   }
   .corner-logo {
     height: 4.5em;
